@@ -175,19 +175,25 @@
   .attr-table tbody tr:hover { background: rgba(201,145,58,.05); }
   .attr-table tbody tr:last-child { border-bottom: none; }
   .attr-table td {
-    padding: 10px 16px;
-    font-size: .95rem;
+    padding: 12px 16px;
+    font-size: 1rem;
+    line-height: 1.7;
     vertical-align: top;
   }
   .attr-table td:first-child {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    font-size: .9rem;
-    color: var(--gold);
+    font-size: 1rem;
+    color: var(--gold-lt);
     white-space: nowrap;
     width: 200px;
   }
-  .attr-table td:last-child { color: var(--text); }
+  .attr-table td:last-child {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+  }
 
   /* ── RANKING CARDS ── */
   .ranking-grid {
@@ -406,7 +412,17 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .attr-table td:first-child { width: 140px; font-size: .8rem; }
+    .attr-table td:first-child { width: 160px; font-size: 1.05rem; }
+
+    .attr-table td {
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .attr-table th {
+      font-size: .9rem;
+    }
+
     .pvpve-key { min-width: 80px; }
   }
   @media (max-width: 480px) {
