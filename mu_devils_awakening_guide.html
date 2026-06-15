@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MU Devils Awakening — Guia de Atributos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold:      #C9913A;
+    --gold-lt:   #F0C96A;
+    --gold-dk:   #7A4E14;
+    --crimson:   #8B1A1A;
+    --crimson-lt:#C0392B;
+    --ember:     #E8541A;
+    --void:      #060608;
+    --deep:      #0D0B12;
+    --panel:     #120F1C;
+    --panel-lt:  #1C1728;
+    --border:    #2A2240;
+    --border-gl: rgba(201,145,58,0.35);
+    --text:      #D4C9B0;
+    --text-dim:  #8A7F6E;
+    --white:     #F5EFE0;
+    --blue-gem:  #3A6B9E;
+    --purple:    #5A2D82;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: var(--void);
+    background-image:
+      radial-gradient(ellipse 80% 40% at 50% -10%, rgba(139,26,26,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 30% at 80% 110%, rgba(90,45,130,0.12) 0%, transparent 60%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='none'/%3E%3Cpath d='M0 0 L60 60 M60 0 L0 60' stroke='%23ffffff' stroke-width='0.15' opacity='0.025'/%3E%3C/svg%3E");
+    color: var(--text);
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    text-align: center;
+    padding: 60px 20px 50px;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(139,26,26,0.25) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .rune-line {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    margin-bottom: 10px;
+  }
+  .rune-line span { color: var(--gold-dk); font-size: 20px; letter-spacing: 6px; opacity: .6; }
+  .rune-line::before, .rune-line::after {
+    content: '';
+    flex: 1; max-width: 160px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dk), transparent);
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 900;
+    color: var(--gold-lt);
+    text-shadow: 0 0 40px rgba(201,145,58,.5), 0 2px 0 #000;
+    letter-spacing: 3px;
+    line-height: 1.1;
+  }
+  h1 em {
+    display: block;
+    font-style: normal;
+    font-size: .45em;
+    color: var(--crimson-lt);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .subtitle {
+    margin-top: 14px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .divider-rune {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    margin: 20px auto 0;
+  }
+  .divider-rune::before, .divider-rune::after {
+    content: '';
+    flex: 1; max-width: 240px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-gl), transparent);
+  }
+  .gem {
+    width: 10px; height: 10px;
+    background: var(--crimson);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    box-shadow: 0 0 10px var(--crimson);
+  }
+
+  /* ── LAYOUT ── */
+  main { max-width: 1280px; margin: 0 auto; padding: 20px 24px 80px; }
+
+  /* ── SECTION TITLES ── */
+  .section-header {
+    display: flex; align-items: center; gap: 16px;
+    margin: 56px 0 24px;
+    position: relative;
+  }
+  .section-header::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--border-gl), transparent);
+  }
+  .section-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    background: radial-gradient(circle, rgba(139,26,26,.4), transparent);
+    border: 1px solid var(--gold-dk);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--gold-lt);
+    letter-spacing: 2px;
+    white-space: nowrap;
+    text-shadow: 0 0 20px rgba(201,145,58,.3);
+  }
+  .section-subtitle {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: .85rem;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ── ATTRIBUTE TABLE ── */
+  .attr-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 40px rgba(0,0,0,.6), inset 0 1px 0 rgba(201,145,58,.1);
+  }
+  .attr-table thead tr {
+    background: linear-gradient(90deg, var(--crimson) 0%, #4A0E0E 50%, var(--panel-lt) 100%);
+  }
+  .attr-table thead th {
+    font-family: 'Cinzel', serif;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--gold-lt);
+    letter-spacing: 2px;
+    padding: 12px 16px;
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gold-dk);
+  }
+  .attr-table tbody tr {
+    border-bottom: 1px solid rgba(42,34,64,.8);
+    transition: background .15s;
+  }
+  .attr-table tbody tr:hover { background: rgba(201,145,58,.05); }
+  .attr-table tbody tr:last-child { border-bottom: none; }
+  .attr-table td {
+    padding: 10px 16px;
+    font-size: .95rem;
+    vertical-align: top;
+  }
+  .attr-table td:first-child {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: .9rem;
+    color: var(--gold);
+    white-space: nowrap;
+    width: 200px;
+  }
+  .attr-table td:last-child { color: var(--text); }
+
+  /* ── RANKING CARDS ── */
+  .ranking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .rank-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .rank-card::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  }
+  .rank-card:hover {
+    border-color: var(--gold-dk);
+    box-shadow: 0 0 20px rgba(201,145,58,.1);
+  }
+  .rank-label {
+    font-family: 'Cinzel', serif;
+    font-size: .7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .rank-stars { letter-spacing: 1px; }
+  .rank-attrs {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* Priority tier colors */
+  .tier-excelente  { --tc: #FFD700; --tg: rgba(255,215,0,.12); }
+  .tier-muito-bom  { --tc: #C9913A; --tg: rgba(201,145,58,.10); }
+  .tier-bom        { --tc: #7FB2D4; --tg: rgba(127,178,212,.08); }
+  .tier-situacional{ --tc: #9B7EB8; --tg: rgba(155,126,184,.08); }
+  .tier-complementar{ --tc: #6E8B6E; --tg: rgba(110,139,110,.08); }
+
+  .rank-card.tier-excelente,
+  .rank-card.tier-muito-bom,
+  .rank-card.tier-bom,
+  .rank-card.tier-situacional,
+  .rank-card.tier-complementar {
+    background: linear-gradient(135deg, var(--tg) 0%, var(--panel) 60%);
+  }
+  .rank-card::before { background: var(--tc); }
+  .rank-label { color: var(--tc); }
+  .rank-stars { color: var(--tc); }
+
+  /* ── PVP/PVE COMPARISON ── */
+  .pvpve-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .pvpve-grid { grid-template-columns: 1fr; } }
+
+  .pvpve-panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .pvpve-panel-header {
+    padding: 12px 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+  .pvpve-panel.pvp .pvpve-panel-header {
+    background: linear-gradient(90deg, #1A0A0A, var(--crimson), #1A0A0A);
+    color: #FF8888;
+    border-bottom: 1px solid var(--crimson-lt);
+  }
+  .pvpve-panel.pve .pvpve-panel-header {
+    background: linear-gradient(90deg, #0A1020, var(--blue-gem), #0A1020);
+    color: #88CCFF;
+    border-bottom: 1px solid var(--blue-gem);
+  }
+  .pvpve-row {
+    display: flex;
+    padding: 9px 20px;
+    border-bottom: 1px solid rgba(42,34,64,.6);
+    align-items: center;
+    gap: 12px;
+    font-size: .9rem;
+    transition: background .15s;
+  }
+  .pvpve-row:last-child { border-bottom: none; }
+  .pvpve-row:hover { background: rgba(201,145,58,.04); }
+  .pvpve-key {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    color: var(--text-dim);
+    font-size: .8rem;
+    letter-spacing: 1px;
+    min-width: 110px;
+    text-transform: uppercase;
+  }
+  .pvpve-val {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    color: var(--gold);
+    font-size: .9rem;
+  }
+
+  /* ── BADGE LEGEND ── */
+  .legend-bar {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin: 0 0 28px;
+    padding: 14px 20px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    align-items: center;
+  }
+  .legend-bar span {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: .78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-right: 4px;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid;
+  }
+
+  /* ── FULL RANKING TABLE ── */
+  .ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 40px rgba(0,0,0,.6);
+  }
+  .ranking-table thead tr {
+    background: linear-gradient(90deg, #1A0830 0%, #0D0B12 100%);
+  }
+  .ranking-table thead th {
+    font-family: 'Cinzel', serif;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--gold-lt);
+    letter-spacing: 2px;
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--gold-dk);
+    text-transform: uppercase;
+  }
+  .ranking-table tbody tr {
+    border-bottom: 1px solid rgba(42,34,64,.6);
+    transition: background .15s;
+  }
+  .ranking-table tbody tr:hover { background: rgba(201,145,58,.04); }
+  .ranking-table tbody tr:last-child { border-bottom: none; }
+  .ranking-table td {
+    padding: 10px 16px;
+    font-size: .9rem;
+  }
+  .ranking-table td:first-child {
+    width: 140px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+  }
+  .ranking-table td:last-child {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .tier-tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 10px;
+    font-size: .75rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: 1px solid;
+  }
+
+  /* tier tag colors */
+  .tag-excelente   { color: #FFD700; border-color: rgba(255,215,0,.4); background: rgba(255,215,0,.08); }
+  .tag-muito-bom   { color: #C9913A; border-color: rgba(201,145,58,.4); background: rgba(201,145,58,.08); }
+  .tag-bom         { color: #7FB2D4; border-color: rgba(127,178,212,.4); background: rgba(127,178,212,.08); }
+  .tag-situacional { color: #B89ECC; border-color: rgba(184,158,204,.4); background: rgba(184,158,204,.08); }
+  .tag-complementar{ color: #8BAF8B; border-color: rgba(139,175,139,.4); background: rgba(139,175,139,.08); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: .8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .attr-table td:first-child { width: 140px; font-size: .8rem; }
+    .pvpve-key { min-width: 80px; }
+  }
+  @media (max-width: 480px) {
+    .attr-table { display: block; overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="rune-line"><span>⚔ ᛗ ᚢ ⚔</span></div>
+  <h1>Guia de Atributos<em>MU Devils Awakening</em></h1>
+  <p class="subtitle">Referência completa · Elementais &amp; Não Elementais · Ranking End Game</p>
+  <div class="divider-rune"><div class="gem"></div></div>
+</header>
+
+<main>
+
+  <!-- ════════════════════════════════
+       SEÇÃO 1 — ATRIBUTOS ELEMENTAIS
+  ════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-icon">🔥</div>
+    <div>
+      <div class="section-title">Atributos Elementais</div>
+      <div class="section-subtitle">Dano, Defesa, Crítico, Absorção e Resistência de Elemento</div>
+    </div>
+  </div>
+
+  <table class="attr-table">
+    <thead>
+      <tr>
+        <th>Atributo</th>
+        <th>Para que serve</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Element ATK</td><td>Define o dano elemental base causado aos inimigos.</td></tr>
+      <tr><td>Element DEF</td><td>Reduz o dano elemental recebido.</td></tr>
+      <tr><td>Element Resistance</td><td>Aumenta a resistência contra ataques elementais.</td></tr>
+      <tr><td>Element Penetration</td><td>Reduz a resistência elemental do alvo, aumentando o dano causado.</td></tr>
+      <tr><td>Element DEF Ignoring</td><td>Ignora parte da defesa ou resistência elemental do inimigo.</td></tr>
+      <tr><td>Element Crit Chance</td><td>Aumenta a chance de causar crítico elemental.</td></tr>
+      <tr><td>Element Crit Resist</td><td>Reduz a chance de sofrer críticos elementais.</td></tr>
+      <tr><td>Element Crit Bonus</td><td>Aumenta o dano causado pelos críticos elementais.</td></tr>
+      <tr><td>Element Crit Reduction</td><td>Reduz o dano dos críticos elementais recebidos.</td></tr>
+      <tr><td>Element Lucky Strike</td><td>Aumenta a chance de ativar ataques especiais (Lucky Strike).</td></tr>
+      <tr><td>Element Lucky Resist</td><td>Reduz a chance de sofrer Lucky Strike.</td></tr>
+      <tr><td>Element DMG Addition</td><td>Adiciona uma quantidade fixa de dano elemental.</td></tr>
+      <tr><td>Element DMG Bonus</td><td>Aumenta percentualmente o dano elemental causado.</td></tr>
+      <tr><td>Element DEF Ignoring (2)</td><td>Chance de ignorar parte da defesa elemental do alvo.</td></tr>
+      <tr><td>Elemental Breakdown</td><td>Ignora ou reduz a resistência elemental do inimigo, aumentando o dano efetivo.</td></tr>
+      <tr><td>Damage Amplification</td><td>Multiplica o dano final causado após os demais cálculos.</td></tr>
+      <tr><td>Damage Bonus Aux</td><td>Aumenta a eficiência de bônus de dano provenientes de sistemas auxiliares.</td></tr>
+      <tr><td>Element DMG Res</td><td>Reduz o dano elemental recebido.</td></tr>
+      <tr><td>Element Fury (ATK)</td><td>Aumenta a eficácia dos ataques Fury Strike.</td></tr>
+      <tr><td>Element Fury (DEF)</td><td>Reduz o efeito dos Fury Strike recebidos.</td></tr>
+      <tr><td>Element Absorb RED</td><td>Reduz a absorção de dano de elemento do inimigo.</td></tr>
+      <tr><td>HP Bonus</td><td>Aumenta a vida máxima do personagem.</td></tr>
+      <tr><td>Elemental DEF</td><td>Aumenta a defesa elemental geral.</td></tr>
+      <tr><td>Elemental Rage</td><td>Aumenta o dano elemental causado.</td></tr>
+      <tr><td>Elemental Absorb</td><td>Reduz a absorção elemental do alvo.</td></tr>
+      <tr><td>Element Crit RES</td><td>Reduz os efeitos dos críticos elementais recebidos.</td></tr>
+    </tbody>
+  </table>
+
+
+  <!-- ════════════════════════════════
+       SEÇÃO 2 — ATRIBUTOS NÃO ELEMENTAIS
+  ════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-icon">⚔️</div>
+    <div>
+      <div class="section-title">Atributos Básicos (Não Elemental)</div>
+      <div class="section-subtitle">Físico, Mágico, Defesa, Especiais e Utilitários</div>
+    </div>
+  </div>
+
+  <table class="attr-table">
+    <thead>
+      <tr>
+        <th>Atributo</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Physical Bonus</td><td>Aumenta o dano físico causado.</td></tr>
+      <tr><td>Magic Bonus</td><td>Aumenta o dano mágico causado.</td></tr>
+      <tr><td>HP Bonus</td><td>Aumenta a vida máxima.</td></tr>
+      <tr><td>Lucky Strike</td><td>Chance de ativar um ataque Lucky Strike.</td></tr>
+      <tr><td>Lucky Resist</td><td>Reduz a chance de sofrer Lucky Strike.</td></tr>
+      <tr><td>Dmg Absorb</td><td>Absorve parte do dano recebido.</td></tr>
+      <tr><td>Dmg Bonus (%)</td><td>Multiplica o dano final causado.</td></tr>
+      <tr><td>Dmg Bonus (Fixo)</td><td>Adiciona dano fixo aos ataques.</td></tr>
+      <tr><td>Counter Dmg</td><td>Reflete parte do dano recebido.</td></tr>
+      <tr><td>Excellent Strike</td><td>Chance de causar um ataque Excellent.</td></tr>
+      <tr><td>Excellency Bonus</td><td>Aumenta o dano dos ataques Excellent.</td></tr>
+      <tr><td>Excellency Resist</td><td>Reduz o dano ou a chance de sofrer Excellent.</td></tr>
+      <tr><td>Double Dmg</td><td>Chance de causar dano dobrado.</td></tr>
+      <tr><td>Double Resist</td><td>Reduz a chance de sofrer dano dobrado.</td></tr>
+      <tr><td>Dmg Reduce</td><td>Reduz percentual do dano recebido.</td></tr>
+      <tr><td>Dmg Resist (%)</td><td>Resistência percentual contra dano geral.</td></tr>
+      <tr><td>Dmg Resist (Fixo)</td><td>Reduz uma quantidade fixa de dano recebido.</td></tr>
+      <tr><td>Ignore Defense</td><td>Chance de ignorar a defesa do alvo.</td></tr>
+      <tr><td>Dmg Penetration</td><td>Faz o dano atravessar parte das defesas do inimigo.</td></tr>
+      <tr><td>Hit Bonus</td><td>Aumenta a precisão dos ataques.</td></tr>
+      <tr><td>Lifesteal on Hit</td><td>Recupera vida ao causar dano.</td></tr>
+    </tbody>
+  </table>
+
+
+  <!-- ════════════════════════════════
+       SEÇÃO 3 — RANKING ELEMENTAL (END GAME)
+  ════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-icon">👑</div>
+    <div>
+      <div class="section-title">Ranking Elemental — End Game</div>
+      <div class="section-subtitle">Prioridade de Atributos Elementais para Conteúdo Avançado</div>
+    </div>
+  </div>
+
+  <div class="legend-bar">
+    <span>Tier:</span>
+    <span class="badge tag-excelente">⬆ Excelente</span>
+    <span class="badge tag-muito-bom">▲ Muito Bom</span>
+    <span class="badge tag-bom">● Bom</span>
+    <span class="badge tag-situacional">◈ Situacional</span>
+    <span class="badge tag-complementar">◇ Complementar</span>
+  </div>
+
+  <table class="ranking-table">
+    <thead>
+      <tr>
+        <th>Prioridade</th>
+        <th>Atributos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tier-tag tag-excelente">⬆ Excelente</span></td>
+        <td>Elemental Breakdown, Element DMG Bonus, Damage Amplification, Element DEF Ignoring</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-muito-bom">▲ Muito Bom</span></td>
+        <td>Element Resistance Reduction, Element Penetration, Element Crit Bonus, Elemental Rage</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-bom">● Bom</span></td>
+        <td>Element Crit, HP Bonus, Element Absorb RED</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-situacional">◈ Situacional</span></td>
+        <td>Element DEF, Element Resistance, Element DMG Res</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-complementar">◇ Complementar</span></td>
+        <td>Element DMG Addition, Lucky Strike, Lucky Resist</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PvP x PvE Elemental -->
+  <div style="margin-top: 24px;">
+    <div style="font-family:'Cinzel',serif; font-size:.85rem; color:var(--text-dim); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px;">⚔ Comparativo PvP × PvE/Boss — Elemental</div>
+    <div class="pvpve-grid">
+      <div class="pvpve-panel pvp">
+        <div class="pvpve-panel-header">⚔ PvP</div>
+        <div class="pvpve-row"><span class="pvpve-key">Prioridade 1</span><span class="pvpve-val">Crit Resistance</span></div>
+        <div class="pvpve-row"><span class="pvpve-key">Prioridade 2</span><span class="pvpve-val">Resistance</span></div>
+        <div class="pvpve-row"><span class="pvpve-key">Prioridade 3</span><span class="pvpve-val">DEF Ignoring</span></div>
+        <div class="pvpve-row"><span class="pvpve-key">Prioridade 4</span><span class="pvpve-val">Penetration</span></div>
+        <div class="pvpve-row"><span class="pvpve-key">Prioridade 5</span><span class="pvpve-val">Crit Bonus</span></div>
+        <div class="pvpve-row"><span class="pvpve-key">Prioridade 6</span><span class="pvpve-val">HP Bonus</span></div>
+      </div>
+      <div class="pvpve-panel pve">
+        <div class="pvpve-panel-header">🐉 PvE / Boss</div>
+        <div class="pvpve-row"><span class="pvpve-key">Prioridade 1</span><span class="pvpve-val">Elemental Breakdown</span></div>
+        <div class="pvpve-row"><span class="pvpve-key">Prioridade 2</span><span class="pvpve-val">Damage Amplification</span></div>
+        <div class="pvpve-row"><span class="pvpve-key">Prioridade 3</span><span class="pvpve-val">Element DMG Bonus</span></div>
+        <div class="pvpve-row"><span class="pvpve-key">Prioridade 4</span><span class="pvpve-val">Element Absorb RED</span></div>
+        <div class="pvpve-row"><span class="pvpve-key">Prioridade 5</span><span class="pvpve-val">HP Bonus</span></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       SEÇÃO 4 — RANKING NÃO ELEMENTAL (END GAME)
+  ════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-icon">🏆</div>
+    <div>
+      <div class="section-title">Ranking Não Elemental — End Game</div>
+      <div class="section-subtitle">Prioridade de Atributos Básicos para Conteúdo Avançado</div>
+    </div>
+  </div>
+
+  <!-- PvP não elemental -->
+  <div style="font-family:'Cinzel',serif; font-size:.85rem; color:var(--text-dim); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px;">⚔ PvP — Não Elemental</div>
+  <table class="ranking-table" style="margin-bottom:24px;">
+    <thead>
+      <tr>
+        <th>Prioridade</th>
+        <th>Atributos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tier-tag tag-excelente">⬆ Excelente</span></td>
+        <td>Dmg Bonus %, Dmg Penetration, Ignore Defense</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-excelente">⬆ Excelente</span></td>
+        <td>HP Bonus, Dmg Reduce</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-muito-bom">▲ Muito Bom</span></td>
+        <td>Excellency Bonus, Excellent Strike</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-muito-bom">▲ Muito Bom</span></td>
+        <td>Dmg Absorb, Excellency Resist</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-bom">● Bom</span></td>
+        <td>Double Dmg, Double Resist</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-situacional">◈ Situacional</span></td>
+        <td>Counter Dmg, Lucky Strike</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PvE/Boss não elemental -->
+  <div style="font-family:'Cinzel',serif; font-size:.85rem; color:var(--text-dim); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px;">🐉 PvE / Boss — Não Elemental</div>
+  <table class="ranking-table">
+    <thead>
+      <tr>
+        <th>Prioridade</th>
+        <th>Atributos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tier-tag tag-excelente">⬆ Excelente</span></td>
+        <td>Dmg Bonus %, Magic Bonus / Physical Bonus</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-excelente">⬆ Excelente</span></td>
+        <td>Ignore Defense</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-muito-bom">▲ Muito Bom</span></td>
+        <td>Excellent Strike</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-muito-bom">▲ Muito Bom</span></td>
+        <td>Excellency Bonus</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-muito-bom">▲ Muito Bom</span></td>
+        <td>Lifesteal on Hit</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-bom">● Bom</span></td>
+        <td>HP Bonus</td>
+      </tr>
+      <tr>
+        <td><span class="tier-tag tag-situacional">◈ Situacional</span></td>
+        <td>Counter Dmg</td>
+      </tr>
+    </tbody>
+  </table>
+
+</main>
+
+<footer>
+  <div class="divider-rune" style="margin-bottom:16px;"><div class="gem"></div></div>
+  MU Devils Awakening · Guia de Atributos · Referência de End Game
+</footer>
+
+</body>
+</html>
